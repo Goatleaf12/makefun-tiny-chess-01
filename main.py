@@ -6,7 +6,7 @@ def VL(a,rq,f,c):
 PS=[0]*1664
 for i in range(768):a=(i>>7)+1;q=i&127;f=q&7;k=q>>4;c=min(f,7-f)+min(k,7-k);PS[(a+6)<<7|q]=MV[a]+VL(a,k,f,c);PS[(6-a)<<7|q]=-MV[a]-VL(a,7-k,f,c)
 KT=(31,33,14,18,-31,-33,-14,-18);OG=(1,16,-1,-16);DB=(15,17,-15,-17);KF=OG+DB
-D=[0]*128;ES=[0];KP=[0,0];SK=[];NC=[0];LM=60000;HR=[]
+D=[0]*128;ES=[0];KP=[0,0];SK=[];NC=[0];HR=[]
 ZB=[*map(random.Random(1).getrandbits,[64]*1664)]
 J=[0];Q={};K=[0]*64;BI=[0]
 EX=Exception
@@ -95,10 +95,10 @@ def PR(f):
  Y=ord(w[3][0])+16*ord(w[3][1])-881 if w[3]!='-'else-1
 def F(d,a,b,r=0):
  NC[0]+=1
- if NC[0]>LM:raise EX
- if not r and HR.count(J[0])>1:return-10
+ if NC[0]>60000:raise EX
+ if r<1 and HR.count(J[0])>1 and ES[0]*W>50:return-10
  if d<-32:return ES[0]*W+8
- e=Q.get(J[0])if d>0 else 0;tm=e[3]if e else 0
+ e=d>0 and Q.get(J[0]);tm=e and e[3]or 0
  if e and e[0]>=d and(e[1]==0 or(e[2]>=b if e[1]==1 else e[2]<=a)):return e[2]
  ck=AT(KP[W<0],-W)
  if d<=0 and not ck:
@@ -118,7 +118,7 @@ def F(d,a,b,r=0):
   if a>=b:
    if d>0 and m<16384:K[d]=m
    break
- if not nl:return-100000 if ck else 0 if d>0 else a
+ if not nl:return-100000*ck or a*(d<=0)or 0
  if r:BI[0]=bm
  if d>0:Q[J[0]]=(d,(a>=b)-(a<=a0),a,bm)
  return a
