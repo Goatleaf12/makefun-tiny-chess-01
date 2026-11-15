@@ -112,7 +112,7 @@ def F(d,a,b,r=0):
   U(m)
   if AT(KP[W>0],W):U(0,1);continue
   nl+=1
-  v=-F(d-1,-b,-a)
+  v=-F(d-1+ck,-b,-a)
   U(0,1)
   if v>a:a=v;bm=m
   if a>=b:
